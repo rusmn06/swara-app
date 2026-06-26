@@ -1,8 +1,9 @@
+# FastAPI app main entry point
 from sqlalchemy import Column, Integer, String, Text, TIMESTAMP, func
-
+# Import Base dari connection.py biar model Feedback keregister ke Base.metadata
 from app.database.connection import Base
 
-
+# Model Feedback buat tabel feedbacks di database
 class Feedback(Base):
     __tablename__ = "feedbacks"
 
