@@ -1,0 +1,85 @@
+
+-- DATABASE SWARA
+
+CREATE DATABASE IF NOT EXISTS maganghub_db
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE maganghub_db;
+
+-- 1. TABEL users
+CREATE TABLE users (
+    id            INT           NOT NULL AUTO_INCREMENT,
+    username      VARCHAR(100)  NOT NULL,
+    password_hash VARCHAR(255)  NOT NULL,
+    role          ENUM('admin', 'viewer') NOT NULL DEFAULT 'viewer',
+    created_at    TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_users_username (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- 2. TABEL companies
+CREATE TABLE companies (
+    id         INT          NOT NULL AUTO_INCREMENT,
+    name       VARCHAR(150) NOT NULL,
+    created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_companies_name (name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- 3. TABEL participants
+CREATE TABLE participants (
+    id               INT         NOT NULL AUTO_INCREMENT,
+    participant_code VARCHAR(20) NOT NULL,
+    company_id       INT         NULL,
+    program_batch    VARCHAR(50) NULL,
+    created_at       TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_participants_code (participant_code),
+    INDEX idx_participants_company_id (company_id),
+
+    CONSTRAINT fk_participants_company
+        FOREIGN KEY (company_id)
+        REFERENCES companies (id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- 4. TABEL feedbacks
+CREATE TABLE feedbacks (
+    id                   INT          NOT NULL AUTO_INCREMENT,
+    feedback_id          VARCHAR(20)  NULL,
+    participant_id       INT          NULL,
+    feedback_text        TEXT         NOT NULL,
+    source               VARCHAR(50)  NULL,
+    week_number          FLOAT        NULL,
+    submission_date      DATE         NULL,
+    predicted_category   VARCHAR(100) NOT NULL,
+    predict_sentiment    VARCHAR(20)  NOT NULL,
+    root_cause           VARCHAR(50)  NULL,
+    severity_weight      FLOAT        NULL,
+    sentiment_multiplier INT          NULL,
+    issue_score          FLOAT        NULL,
+    created_at           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_feedbacks_feedback_id (feedback_id),
+    INDEX idx_feedbacks_participant_id   (participant_id),
+    INDEX idx_feedbacks_sentiment        (predict_sentiment),
+    INDEX idx_feedbacks_category         (predicted_category),
+    INDEX idx_feedbacks_root_cause       (root_cause),
+    INDEX idx_feedbacks_submission_date  (submission_date),
+    INDEX idx_feedbacks_issue_score      (issue_score),
+
+    CONSTRAINT fk_feedbacks_participant
+        FOREIGN KEY (participant_id)
+        REFERENCES participants (id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
