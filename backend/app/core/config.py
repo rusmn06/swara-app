@@ -31,11 +31,11 @@ class Settings(BaseSettings):
 
     # Folder models ada di backend/app/models/
     MODEL_DIR: Path = APP_DIR / "models"
-    SENTIMENT_MODEL_PATH: Path = MODEL_DIR / "best_sentiment_feedback_model.pkl"
-    CATEGORY_MODEL_PATH: Path = MODEL_DIR / "best_category_feedback_model.pkl"
+    SENTIMENT_MODEL_PATH: Path = MODEL_DIR / "V3_sentiment_feedback_model.pkl"
+    CATEGORY_MODEL_PATH: Path = MODEL_DIR / "V3_category_feedback_model.pkl"
 
     # Dataset CSV juga ada di folder models/
-    DATASET_PATH: Path = MODEL_DIR / "dataset_maganghub_final_fix.csv"
+    DATASET_PATH: Path = MODEL_DIR / "Swara_DatasetBaru.csv"
 
     # Model config biar bisa baca file .env
     model_config = SettingsConfigDict(
