@@ -4,14 +4,14 @@ Swara is an internal analytics dashboard that turns raw internship participant f
 
 ## What it does
 
-- **Overview Dashboard** — a home screen summarizing overall sentiment trend, negative-sentiment share by partner, a partner leaderboard, and trending topics.
-- **Sentiment Monitoring** — tracks the Positive / Negative / Neutral split of feedback over time and by filters.
-- **Feedback Category** — breaks feedback down by category (e.g. Platform & Technical, Administration & Benefits, Program Policy, Mentoring, Communication, Other).
-- **Root Cause Analysis** — surfaces the specific underlying causes behind negative feedback (e.g. UI/UX, Attendance, Login, Report Upload, System Bugs).
-- **Trending Participant Issues** — compares this week vs. last week by category to flag issues that are spiking.
-- **Partner (Mitra) Performance Monitoring** — compares partner companies (Halodoc, Ajaib, DANA, IndoDana, Traveloka) on issue volume and severity.
-- **Program Report** — reporting view for a given program batch.
-- **Executive Overview** — a read-only, filter-free summary page built specifically for management, showing all-time aggregated KPIs, trend, top topics, and partner health, with local notes and PDF export.
+- **Overview Dashboard** - a home screen summarizing overall sentiment trend, negative-sentiment share by partner, a partner leaderboard, and trending topics.
+- **Sentiment Monitoring** - tracks the Positive / Negative / Neutral split of feedback over time and by filters.
+- **Feedback Category** - breaks feedback down by category (e.g. Platform & Technical, Administration & Benefits, Program Policy, Mentoring, Communication, Other).
+- **Root Cause Analysis** - surfaces the specific underlying causes behind negative feedback (e.g. UI/UX, Attendance, Login, Report Upload, System Bugs).
+- **Trending Participant Issues** - compares this week vs. last week by category to flag issues that are spiking.
+- **Partner (Mitra) Performance Monitoring** - compares partner companies (Halodoc, Ajaib, DANA, IndoDana, Traveloka) on issue volume and severity.
+- **Program Report** - reporting view for a given program batch.
+- **Executive Overview** - a read-only, filter-free summary page built specifically for management, showing all-time aggregated KPIs, trend, top topics, and partner health, with local notes and PDF export.
 
 Under the hood, feedback text has already been processed and scored by a machine learning pipeline (sentiment classification, category classification, and an engineered `issue_score` that combines category severity with negative sentiment), so the dashboard is working with clean, structured data rather than raw text.
 
