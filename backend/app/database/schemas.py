@@ -1,7 +1,19 @@
-# FastAPI app main entry point
-from sqlalchemy import Column, Integer, String, Text, TIMESTAMP, func
-# Import Base dari connection.py biar model Feedback keregister ke Base.metadata
+from sqlalchemy import Column, Integer, String, Text, TIMESTAMP, Boolean, Enum, func
 from app.database.connection import Base
+
+# Model User buat tabel users di database (autentikasi & role-based access)
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String(100), unique=True, nullable=False)
+    password_hash = Column(String(255), nullable=False)
+    display_name = Column(String(100), nullable=True)
+    role = Column(Enum("admin", "manajerial", name="user_role"), nullable=False, default="manajerial")
+    is_active = Column(Boolean, nullable=False, default=True)
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
+
 
 # Model Feedback buat tabel feedbacks di database
 class Feedback(Base):

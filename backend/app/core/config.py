@@ -11,12 +11,17 @@ class Settings(BaseSettings):
     APP_VERSION: str = "0.1.0"
     DEBUG: bool = True
 
-    # Kredensial MySQL (diisi dari file .env di folder backend/)
+    # Kredensial MySQL (diisi dari file .env)
     DB_HOST: str = "localhost"
     DB_PORT: int = 3306
     DB_USER: str = "root"
     DB_PASSWORD: str = ""
     DB_NAME: str = "maganghub_db"
+    
+    # Konfigurasi JWT (diisi dari file .env)
+    JWT_SECRET_KEY: str
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRE_DAYS: int = 7
     
     # Properti buat bikin DATABASE_URL dari kredensial MySQL
     @property
