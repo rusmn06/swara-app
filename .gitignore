@@ -27,6 +27,7 @@ __pycache__/
 /backend/*.bak
 /backend/venv/
 /backend/node_modules/
+/backend/app/database/code.txt
 
 # ==== Node / Frontend (TailAdmin - Vite + React) ====
 frontend/
