@@ -30,19 +30,18 @@ __pycache__/
 /backend/app/database/code.txt
 
 # ==== Node / Frontend (TailAdmin - Vite + React) ====
-frontend/
-frontend-tailadmin/node_modules/
-frontend-tailadmin/dist/
-frontend-tailadmin/dist-ssr/
-frontend-tailadmin/*.local
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
 
 # Logs
-frontend-tailadmin/logs
-frontend-tailadmin/npm-debug.log*
-frontend-tailadmin/yarn-debug.log*
-frontend-tailadmin/yarn-error.log*
-frontend-tailadmin/pnpm-debug.log*
-frontend-tailadmin/lerna-debug.log*
+frontend/logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
 
 # ==== Editor / OS (berlaku untuk keduanya) ====
 .vscode/*
