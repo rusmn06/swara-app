@@ -34,7 +34,7 @@ Under the hood, feedback text has already been processed and scored by a machine
 
 - Node.js (LTS) and npm/yarn
 - Python 3.10+ and pip
-- MySQL server — locally this project uses **Laragon** on Windows
+- MySQL server locally this project uses **Laragon** on Windows
 - The processed dataset file and trained model files (`.pkl`) from the ML team
 
 ## Getting started
@@ -64,7 +64,7 @@ DB_NAME=maganghub_db
 JWT_SECRET_KEY=
 ```
 
-`JWT_SECRET_KEY` is the secret used to sign authentication tokens. Generate a random value for it — don't leave it blank or use a guessable string. Pick one of these:
+`JWT_SECRET_KEY` is the secret used to sign authentication tokens. Generate a random value for it don't leave it blank or use a guessable string. Pick one of these:
 
 ```bash
 # Option 1: Python (works anywhere Python is installed)
@@ -117,7 +117,7 @@ This will hash each password before storing it and insert the accounts into the 
 
 - Change the placeholder passwords above before running this against anything beyond local development — never seed production with default passwords.
 - Re-running the seed script should not create duplicate accounts if a username already exists; adjust the script to skip or update existing usernames.
-- `role` here distinguishes an `admin` (full dashboard access) from `manajerial` (Executive Overview-only access) — make sure this matches whatever roles the auth/authorization logic actually checks for.
+- `role` here distinguishes an `admin` (full dashboard access) from `manajerial` (Executive Overview-only access)  make sure this matches whatever roles the auth/authorization logic actually checks for.
 
 ### 4. Frontend setup
 
@@ -140,7 +140,7 @@ All endpoints are served under `/api` and read from the processed dataset (partn
 | `GET /stats/sentiment` | Sentiment distribution (filters: date range, company, program batch) |
 | `GET /stats/category` | Feedback count by category (filter: program batch) |
 | `GET /stats/company` | Per-partner performance summary (filters: date range) |
-| `GET /stats/trend` | Sentiment over time — daily/weekly/monthly (filters: period, date range) |
+| `GET /stats/trend` | Sentiment over time daily/weekly/monthly (filters: period, date range) |
 | `GET /stats/leaderboard` | Partner ranking by issue score (filters: limit, company, category, date range, batch) |
 | `GET /stats/root-cause` | Root cause distribution (filters: company, date range, batch) |
 | `GET /stats/trending-issues` | Current vs. previous week issue trend by category |
@@ -150,7 +150,7 @@ All endpoints are served under `/api` and read from the processed dataset (partn
 ## Notes on data & scope
 
 - The single source of truth for all dashboard analytics is the processed dataset produced by the ML team (feature-engineered CSV with sentiment, category, root cause, and issue score already computed). A separate, larger dataset used for model training is not used by the dashboard.
-- Login/authentication is not yet implemented in the current build — it's planned as a separate feature.
+- Login/authentication is not yet implemented in the current build it's planned as a separate feature.
 - The Executive Overview page is intentionally static: no filters, date pickers, or grouping controls, since it's meant as a fixed, always-current summary for management.
 
 ## Project status
