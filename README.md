@@ -1,4 +1,4 @@
-# Swara — Feedback Analytics Dashboard for MagangHub
+# Swara - Feedback Analytics Dashboard for MagangHub
 
 Swara is an internal analytics dashboard that turns raw internship participant feedback (questionnaire responses) into structured, actionable insight for MagangHub's management team. It gives real-time visibility into participant sentiment, the kinds of issues participants are running into, and how each partner company is performing over time.
 
